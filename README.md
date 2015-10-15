@@ -29,15 +29,54 @@ You will need [Leiningen][1] 2.0 or above installed.
 
 ## Install
 
-`$ export DATABASE_URL=jdbc:postgresql:baxtore2_development`
+1. Install postgres 9.4+
 
-TODO
+[postgreSQL][2]
+[2]: http://www.postgresql.org/download/
+
+2. Install leiningen
+
+[leiningen][3]
+[3]: https://github.com/technomancy/leiningen
+
+    $ git clone https://github.com/Jacob-Kroeze/oneform.git
+
+3. Create a file call profiles.clj in the root the project with this content editing for your database name
+
+    {:profiles/dev
+     {:env
+      {:database-url
+       "jdbc:postgresql://localhost/{databasename?user=db_user&password=db_password"}
+       :app-context "/oneform"}}
+       :profiles/test
+     {:env
+      {:database-url
+       "jdbc:postgresql://localhost/myapp_test?user=db_user&password=db_password"}}}
+
+4. Create the database names above. Try the command or use the ui [PGadmin][4]
+
+[4]: http://www.pgadmin.org/download/
+    
+    $createdb databasename
+
+5. Run
+    $ lein run migrate
+    $ lein run
+
+6. Go to localhost:3000/oneform/form-builder/new in your browser
+
+click save
+
+7. Go to localhost:3000/oneform/form-schemas-index
+
+Explore!
 
 ## Running
 
 To start a web server for the application, run:
 
-    lein ring server
+    lein run migrate
+    lein run
 
 ## License
 
