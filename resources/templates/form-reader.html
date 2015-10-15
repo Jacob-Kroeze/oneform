@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="Fill out a form to send
+                                          files to the gold file repository.">
+        <meta name="keywords" content="laserfiche forms">
+
+        <meta name="author" content="Jacob Kroeze">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        {% script "http://html5shim.googlecode.com/svn/trunk/html5.js" %}
+        <![endif]-->
+
+        {% style "/lib/bootstrap/dist/css/bootstrap.min.css" %}
+
+
+<!-- 
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.min.css"></link>
+        <link rel="stylesheet" href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css"></link>
+-->
+        {% style "/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" %}
+
+        {% style "/assets/themes/dbyll/resources/syntax/syntax.css" %}
+
+
+
+        <!-- Le styles -->
+        <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- 
+        {% style "/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" %}
+ -->
+        <link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
+        {% style "/assets/themes/dbyll/resources/syntax/syntax.css" %}
+        {% style "/assets/themes/dbyll/css/style.css" rel="stylesheet" %}
+        <!-- Le fav and touch icons -->
+        <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        -->
+
+        <!-- jQuery -->
+        {% script "/lib/jquery/dist/jquery.min.js" %}
+
+        <!-- Bootstrap -->
+        {%  script "/lib/bootstrap/dist/js/bootstrap.min.js" %}
+
+        <!-- Handlebars -->
+        {% script "/lib/handlebars/handlebars.min.js" %}
+
+        <!-- Alpaca -->
+        {% script "/lib/alpaca/bootstrap/alpaca.js" %}
+        {% style "/lib/alpaca/bootstrap/alpaca.css" %}
+        <!-- jQuery UI Support -->
+        {% script "/lib/jquery-ui/jquery-ui.js" %}
+        {% style "/lib/jquery-ui/themes/cupertino/jquery-ui.min.css" %}
+
+        <!-- Required for jQuery UI DateTimePicker control -->
+        {% script "/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.js" %}
+        {% style "/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css" %}
+
+        <!-- Required for Text Field masking -->
+        {% script "/lib/jquery-maskedinput/dist/jquery.maskedinput.min.js" %}
+
+        <!-- typeahead.js -->
+        {% script "/lib/typeahead.js/dist/bloodhound.min.js" %}
+        {% script "/lib/typeahead.js/dist/typeahead.bundle.min.js" %}
+
+        <!-- datatables (for TableField) -->
+      
+        {% script "/lib/datatables/media/js/jquery.dataTables.js" %}
+        <!--<link type="text/css" href="/lib/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>-->
+        {% script "/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js" %}
+        {% style "/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" %}
+
+        <!-- tinymce (for the tinymce field) -->
+        {% script "/lib/tinymce/tinymce.js" %}
+
+        <!-- fileupload control (for UploadField) -->
+        {% style "/lib/jquery-file-upload/css/jquery.fileupload.css" %}
+        {% style "/lib/jquery-file-upload/css/jquery.fileupload-ui.css" %}
+        {% script "/lib/jquery-file-upload/js/vendor/jquery.ui.widget.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.iframe-transport.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload-process.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload-ui.js" %}
+
+        <!-- handsontable (for GridField) -->
+        {% script "/lib/handsontable/dist/jquery.handsontable.full.js" %}
+        {% style "/lib/handsontable/dist/jquery.handsontable.full.css" %}
+
+        <!-- bootstrap datetimepicker for date, time and datetime controls -->
+        {% script "/lib/moment/min/moment-with-locales.min.js" %}
+        {% script "/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}
+        {% style "/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" %} 
+
+        <!-- bootstrap-multiselect for time field -->
+        {% script "/lib/bootstrap-multiselect/js/bootstrap-multiselect.js" %}
+        {% style "/lib/bootstrap-multiselect/css/bootstrap-multiselect.css" %}
+
+        <!-- jQuery Price Format for currency field -->
+        {% script "/lib/jquery-price-format/jquery.price_format.min.js" %}
+
+
+        <!--[if lt IE 9]>
+        {% script "/lib/respond/dest/respond.min.js" %}
+        <![endif]-->
+
+
+        <script>
+            Alpaca.defaultFocus = false;
+        </script>
+
+        <!-- -- header.html end ---->
+    </head>
+    
+    <body>
+        <h1>Edit {{form-name}}</h1>
+        <div id='form'></div>
+        <div id='csrf-field'></div>
+        <script type="text/javascript">
+         var Alpaca = $.alpaca;
+         Alpaca.CSRF_TOKEN = "{{csrf-token}}";
+         $("#form").alpaca({
+             //"dataSource": "/oneform/form/data/{{form-name}}/{{uuid}}",
+             //"viewSource": "/oneform/form/view/{{form-name}}",
+             "optionsSource": "/oneform/form/options/{{form-name}}",
+             "schemaSource": "/oneform/form/schema/{{form-name}}",
+             "options": {
+                 "attributes": {
+                     "action": "{{form-action-endpoint}}",
+                     "method": "post"
+                 },
+                 "form": {
+                     "buttons": {
+                         "submit": {
+                             "click": function() {
+                                 var value = this.getValue();
+                                 if (this.isValid(true)) {
+                                     var value = this.getValue();
+                                     console.log(value)
+                                         var c = {
+                                             "method": "post",
+                                             "url": "{{form-action-endpoint}}",
+                                             "data": JSON.stringify(value),
+                                             "headers": {},
+                                             "contentType": "application/json",
+                                             "success": function(data){alert("submitted okay")},
+                                             "failure": function(errMsg) {alert(errMsg)}
+                                         };
+                                     var csrfToken = Alpaca.Form.prototype.determineCsrfToken();
+                                     if (csrfToken)
+                                     {
+                                         c.headers[Alpaca.CSRF_HEADER_NAME] = csrfToken;
+                                     }
+                                     $.ajax(c);
+                                 };
+                             }
+                         }
+                     }
+                 },
+                 "fields": {
+                     "files": {
+                         "label": "PDF or TIFF",
+                         "type": "upload",
+                         "fileTypes": ".*(pdf|tif?f)",
+                         "upload": {
+                             "url": "{{files-endpoint}}"
+                         },
+                         "multiple": "false",
+                         "maxNumberOfFiles": 1
+                     },
+                     "usc_id": {
+                         "label": "Faculty name - USC Id",
+                         "helper": "Type name (at least 3 chars)",
+                         "typeahead": {
+                             "datasets":  {
+                                 "type": "remote",
+                                 //TODO: this limit doesn't
+                                 //get read by typeahead template;
+                                 "limit": 15,
+                                 "display": "name",
+                                 "source": "{{lookup-url}}?q=%QUERY"
+                             },
+                             "config": {
+                                 "highlight": "true",
+                                 "minLength": 3
+                             }
+
+                         }
+
+                     }
+                 }
+             }
+         })
+        </script>
+    </body>
+</html>

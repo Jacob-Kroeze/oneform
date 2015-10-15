@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="Fill out a form to send
+                                          files to the gold file repository.">
+        <meta name="keywords" content="laserfiche forms">
+
+        <meta name="author" content="Jacob Kroeze">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        {% script "http://html5shim.googlecode.com/svn/trunk/html5.js" %}
+        <![endif]-->
+
+        {% style "/lib/bootstrap/dist/css/bootstrap.min.css" %}
+
+
+        <!-- 
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.min.css"></link>
+        <link rel="stylesheet" href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css"></link>
+        -->
+        {% style "/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" %}
+
+        {% style "/assets/themes/dbyll/resources/syntax/syntax.css" %}
+
+
+
+        <!-- Le styles -->
+        <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <!-- 
+        {% style "/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" %}
+        -->
+        <link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
+        {% style "/assets/themes/dbyll/resources/syntax/syntax.css" %}
+        {% style "/assets/themes/dbyll/css/style.css" rel="stylesheet" %}
+        <!-- Le fav and touch icons -->
+        <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        -->
+
+        <!-- jQuery -->
+        {% script "/lib/jquery/dist/jquery.min.js" %}
+
+        <!-- Bootstrap -->
+        {%  script "/lib/bootstrap/dist/js/bootstrap.min.js" %}
+
+        <!-- Handlebars -->
+        {% script "/lib/handlebars/handlebars.min.js" %}
+
+        <!-- Alpaca -->
+        {% script "/lib/alpaca/bootstrap/alpaca.js" %}
+        {% style "/lib/alpaca/bootstrap/alpaca.css" %}
+        <!-- jQuery UI Support -->
+        {% script "/lib/jquery-ui/jquery-ui.js" %}
+        {% style "/lib/jquery-ui/themes/cupertino/jquery-ui.min.css" %}
+
+        <!-- Required for jQuery UI DateTimePicker control -->
+        {% script "/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.js" %}
+        {% style "/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css" %}
+
+        <!-- Required for Text Field masking -->
+        {% script "/lib/jquery-maskedinput/dist/jquery.maskedinput.min.js" %}
+
+        <!-- typeahead.js -->
+        {% script "/lib/typeahead.js/dist/bloodhound.min.js" %}
+        {% script "/lib/typeahead.js/dist/typeahead.bundle.min.js" %}
+
+        <!-- datatables (for TableField) -->
+        
+        {% script "/lib/datatables/media/js/jquery.dataTables.js" %}
+        <!--<link type="text/css" href="/lib/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>-->
+        {% script "/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js" %}
+        {% style "/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" %}
+
+        <!-- tinymce (for the tinymce field) -->
+        {% script "/lib/tinymce/tinymce.js" %}
+
+        <!-- fileupload control (for UploadField) -->
+        {% style "/lib/jquery-file-upload/css/jquery.fileupload.css" %}
+        {% style "/lib/jquery-file-upload/css/jquery.fileupload-ui.css" %}
+        {% script "/lib/jquery-file-upload/js/vendor/jquery.ui.widget.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.iframe-transport.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload-process.js" %}
+        {% script "/lib/jquery-file-upload/js/jquery.fileupload-ui.js" %}
+
+        <!-- handsontable (for GridField) -->
+        {% script "/lib/handsontable/dist/jquery.handsontable.full.js" %}
+        {% style "/lib/handsontable/dist/jquery.handsontable.full.css" %}
+
+        <!-- bootstrap datetimepicker for date, time and datetime controls -->
+        {% script "/lib/moment/min/moment-with-locales.min.js" %}
+        {% script "/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}
+        {% style "/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" %} 
+
+        <!-- bootstrap-multiselect for time field -->
+        {% script "/lib/bootstrap-multiselect/js/bootstrap-multiselect.js" %}
+        {% style "/lib/bootstrap-multiselect/css/bootstrap-multiselect.css" %}
+
+        <!-- jQuery Price Format for currency field -->
+        {% script "/lib/jquery-price-format/jquery.price_format.min.js" %}
+
+
+        <!--[if lt IE 9]>
+        {% script "/lib/respond/dest/respond.min.js" %}
+        <![endif]-->
+
+        <!-- ACE editor -->
+        {% script "/lib/ace-builds/src-min-noconflict/ace.js" %}
+        
+        {% script "/assets/alpaca/form-builder.js" %}
+        {% style "/assets/alpaca/form-builder.css" %}
+
+    </head>
+    <body data-spy="scroll" data-target=".demo-nav">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../examples.html">Alpaca Examples</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="form-builder.html">Form Builder Demo</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#source" data-toggle="tab" class="tab-item tab-item-source">Source</a></li>
+                            <li><a href="#designer" data-toggle="tab" class="tab-item tab-item-designer">Designer</a></li>
+                            <li><a href="#view" data-toggle="tab" class="tab-item tab-item-view">View</a></li>
+                            <li><a href="#code" data-toggle="tab" class="tab-item tab-item-code">Code</a></li>
+                            <li><a href="#loadsave" data-toggle="tab" class="tab-item tab-item-loadsave">Load / Save</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="source">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#schema" data-toggle="tab" class="tab-source-schema">Schema</a></li>
+                                            <li><a href="#options" data-toggle="tab" class="tab-source-options">Options</a></li>
+                                            <li><a href="#data" data-toggle="tab" class="tab-source-data">Data</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="schema">
+                                        </div>
+                                        <div class="tab-pane" id="options">
+                                        </div>
+                                        <div class="tab-pane" id="data">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#preview" data-toggle="tab">Preview</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="preview">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="previewDiv"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="designer">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="designerDiv"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a href="#types" data-toggle="tab">Types</a></li>
+                                                    <li><a href="#basic" data-toggle="tab">Basic</a></li>
+                                                    <li><a href="#advanced" data-toggle="tab">Advanced</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="types"></div>
+                                                <div class="tab-pane" id="basic"></div>
+                                                <div class="tab-pane" id="advanced"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="view">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="viewDiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="code">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="codeDiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="loadsave">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <button class="btn btn-default load-button">Load Form</button>
+                                    <br/>
+                                    <br/>
+                                    <button class="btn btn-default save-button">Save Form</button>
+                                    <br/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+         Alpaca.CSRF_TOKEN = "{{csrf-token}}";
+         Alpaca.FILES_ENDPOINT = "{{files-endpoint}}";
+         Alpaca.FORM_ACTION_ENDPOINT = "{{form-action-endpoint}}";
+         Alpaca.SCHEMAS_URL = "{{form-schemas-url}}";//"/oneform/form/no_name_demo";
+        </script>
+    </body>
+</html>

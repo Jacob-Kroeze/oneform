@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Basic Editor Example | Alpacajs</title>
+        <!-- jquery -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        
+        <!-- bootstrap -->
+        <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+        <!-- handlebars -->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+        <link type="test/css" rel="stylesheet" href="http://code.cloudcms.com/alpaca/1.5.9/bootstrap/alpaca.min.css"/>
+        <script src="http://code.cloudcms.com/alpaca/1.5.9/bootstrap/alpaca.min.js"></script>
+    </head>
+    <body>
+        <h1>File Upload</h1>
+        <div id='form'></div>
+        <script type="text/javascript">
+         $(document).ready(function() {
+             $("#form").alpaca({
+                 "view": "bootstrap-create",
+                 "schema": {
+                     "type": "object",
+                     "properties": {
+                         "title": {
+                             "type": "string",
+                             "title": "Title",
+                             "required": true
+                         },
+                         "files": {
+                             "type": "array",
+                             "title": "Files",
+                             "required": true
+                         }
+                     }
+                 },
+                 "options": {
+                     "fields": {
+                         "files": {
+                             "type": "upload",
+                             "multiple": true,
+                             "maxFileSize": 25000000,
+                             "maxNumberOfFiles": 3,
+                             "fileTypes": "/(\.|\/)(gif|jpe?g|png)$/i",
+                             "upload": {
+                                 "url": "http://www.httpbin.org/post"
+                             }
+                         }
+                     },
+                     "focus": true,
+                     "form": {
+                         "attributes": {
+                             "method": "POST",
+                             "action": "form.php",
+                             "enctype": "multipart/form-data"
+                         },
+                         "buttons": {
+                             "submit": {
+                                 "value": "Submit"
+                             }
+                         }
+                     }
+                 }
+             });
+         });
+         
+        </script>
+    </body>
+</html>
